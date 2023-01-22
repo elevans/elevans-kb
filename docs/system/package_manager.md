@@ -1,11 +1,6 @@
-# Linux fixes
-This document describes various linux fixes I've found through my searches on the internet.
+# Package manager
 
-## Security
-
-This section is for security software based fixes (_e.g._ `apt-key` ring, firewalls, vpns).
-
-### `apt-key` deprecation warning
+## `apt-key` deprecation warning
 
 This warning is raised when adding a 3rd party key to the deprecated `apt-key`. In order to resolve this
 warning you need to export the old keys from `apt-key` and add it to the keyring.

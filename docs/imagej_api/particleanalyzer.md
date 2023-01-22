@@ -1,12 +1,8 @@
-# ImageJ API Usage
-
-Note that most of the code examples here use PyImageJ and scyjava.
-
-## `ij.plugin.filter.ParticleAnalyzer`
+# `ij.plugin.filter.ParticleAnalyzer`
 
 This section covers the `ParticleAnalyzer` which is triggred by the "Analyze Particles..." command.
 
-### Save results to ResultsTable (headless)
+## Save results to ResultsTable (headless)
 
 Save results from the particle analyzer to a `ResultsTable` headlessly by and obtaining an empty results table object from `ij.ResultsTable.getResultsTable()` and setting the particle analyzer results table to the empty one.
 

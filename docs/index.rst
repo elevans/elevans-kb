@@ -12,8 +12,10 @@ This is a knowledge base of various fixes and howtos I've come across.
    :maxdepth: 3
    :caption: Contents:
 
+   networking/networking_index
    image_processing
-   linux_fixes
+   security/security_index
+   system/system_index
    usage
 
 Indices and tables

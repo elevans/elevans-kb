@@ -42,7 +42,7 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- MyST-Parser/MyST-NB configuration ------------------------------------------------------
-myst_heading_anchors = 4
+myst_heading_anchors = 3
 nb_execution_mode = 'off'
 
 # -- Options for HTML output -------------------------------------------------
