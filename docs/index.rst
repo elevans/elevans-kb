@@ -12,9 +12,11 @@ This is a knowledge base of various fixes and howtos I've come across.
    :maxdepth: 3
    :caption: Contents:
 
+   development/development_index
    networking/networking_index
    image_processing
    security/security_index
+   software/software_index
    system/system_index
    usage
 
