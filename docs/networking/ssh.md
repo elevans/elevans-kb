@@ -20,7 +20,7 @@ $ scp -r /path/to/local/dir <username>@<remotehost>:/path/to/remote/dir
 
 ## Using your SSH `.pub` key on target machine
 
-To use your `.pub` key on a target machine/server simply copy your `id_ed25519.pub` file from the host machine to your `~/.ssh/authorized_keys/` folder on the target machine.
+To use your `.pub` key on a target machine/server simply copy the contents of your `id_ed25519.pub` file from the host machine to the `~/.ssh/authorized_keys` file on the target machine.
 
 ## Setup SSH config
 

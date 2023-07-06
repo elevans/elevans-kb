@@ -1,55 +1,5 @@
 # Storage
 
-## Mount and share a network drive
-
-1. List connected storage devices with the following command. Copy the UUID number and file system type of the target drive.
-
-```bash
-$ lsblk -o NAME,FSTYPE,UUID,MOUNTPOINTS
-NAME        FSTYPE   UUID                                 MOUNTPOINTS
-loop0       squashfs                                      /snap/core20/1590
-loop1       squashfs                                      /snap/core20/1782
-loop2       squashfs                                      /snap/lxd/22927
-loop3       squashfs                                      /snap/lxd/23545
-loop4       squashfs                                      /snap/snapd/17885
-loop5       squashfs                                      /snap/snapd/17954
-sda         ext4     9ccc18c6-a72f-4b97-a16b-e43ff8272928 
-mmcblk0                                                   
-├─mmcblk0p1 vfat     D7E2-9D99                            /boot/firmware
-└─mmcblk0p2 ext4     b09bb4c8-de4d-4ce6-a93f-30c4c9241a58 /
-```
-
-2. Create a mount point.
-
-```bash
-$ sudo mkdir /media/mount
-```
-
-3. To mount the drive manually use the following command:
-
-```bash
-$ sudo mount /dev/sd# /path/to/mount
-```
-
-Note that this only mounts the drive for the current session. You will need to remount the drive again after a roboot. To automatically mount the drive follow the next steps to edit the `/etc/fstab` file.
-
-4. Add drives to `/etc/fstab` for auto mount on bootup.
-
-At the end of the `/etc/fstab`file. 
-
-```
-<UUID> <mount point> <file system type> <options> <dump>
-UUID=<UUID> <PATH_TO_MOUNT> <FILE_TYPE> defaults 0 2
-```
-
-For example, for drive `dev/sda`:
-
-```
-UUID=9ccc18c6-a72f-4b97-a16b-e43ff8272928 /media/d0 ext4 defaults 0 2
-```
-
-_Note that `0` enables or disables backup of the drive. Normally this is set to `0`. The `2` in the last arg position enables `fsck` checks. The primary boot device should be `1`, all other drives should be `2`. Setting this arg to `0` disables the `fsck` checks._
-
 ## Share a drive with Samba
 
 1. Install Samba:
@@ -71,7 +21,7 @@ $ sudo ufw allow samba
 $ sudo groupadd share
 ```
 
-4. Create a system user and add them to the `share` group.
+4. Create a system user.
 
 ```bash
 $ sudo adduser shareuser
@@ -91,48 +41,65 @@ Work Phone []:
 Home Phone []: 
 Other []: 
 Is the information correct? [Y/n] y
+```
+
+5. Add them to the `share` group.
+
+``` bash
 $ sudo usermod -aG share shareuser
 ```
 
-5. Add the user to Samba and create their password.
+6. Add the user to Samba and create their password.
 
 ```bash
-$ sudo smpasswd -a shareuser
+$ sudo smbpasswd -a shareuser
 New SMB password:
 Retype new SMB password:
 ```
 
-6. Change the permissions on the target share drive/directory.
+7. _Optional_: Change the ownship of the existing files on the share drive and grant read/write permissions to the group.
 
 ```bash
-$ sudo chgrp share /path/to/share
-$ sudo chmod 770 /path/to/share
+$ sudo chown -R :share /path/to/share
+$ sudo chmod -R g+rw /path/to/share
 ```
 
-7. Edit the Samba configuration file at `/etc/samba/smb.conf` with the drive details. For example, add an entry like this:
+8. Edit the Samba configuration file at `/etc/samba/smb.conf` with the drive details. For example, add an entry like this:
 
 ```
+[global]
+   workgroup = WORKGROUP
+   server string = Samba server
+   security = user
+   map to guest = bad user
+   guest account = nobody
+   directory mask = 0775
+   create mask = 0664
+
 [share_name]
    comment = A comment
    path = /path/to/dir
    valid users = @share
+   force group = share
    read only = no
-   browsable = yes
    writeable = yes
+   browseable = yes
+   directory mask = 0775
+   create mask = 0664
    public = yes
-   create mask = 0660
-   directory mask = 0770
-   force group = +share
 ```
 
-8. Restart Samba service.
+9. Restart Samba service.
 
 ```bash
 $ sudo service smbd restart
 ```
 
 Some additional notes about the share configuration:
-- `valid users`: only users of the group `share` have access rights. The `@` denotes a group name.
-- `force group = +share`: files and directories are created with this group, instead of the user group
-- `create mask = 0660`: files in the share are created with permissions to allow all group users to read and write fiels created by other users.
-- `directory mask = 0770`: same as `create mask` but for directories.
+- `valid users`: Defines the users or groups that are allowed access to the share. In this case, it is set to `@share`, which refers to the "share" group.
+- `force group = share`: Forces the group ownership of files and directories within the share to be the specified group. Here, it is set to "share" to ensure the "share" group has ownership.
+- `create mask = 0664`: Sets the default permissions for newly created files. The value `0664` means read and write permissions for the owner and group, and read permissions for others.
+- `directory mask = 0770`: Sets the default permissions for newly created directories. The value `0775` means read, write, and execute permissions for the owner and group, and read and execute permissions for others.
+- `read only = no`: Specifies whether the share is read-only or writeable. It is set to "no" to allow write access.
+- `writeable = yes`: Same as read only, specifies if the share is writeable.
+- `browseable = yes`: Specifies whether the share is visible when browsing the network.

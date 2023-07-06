@@ -1,4 +1,4 @@
-# Disk functions
+# Disk operations
 
 ## Create a Virtual Hard Disk (VHD) image
 

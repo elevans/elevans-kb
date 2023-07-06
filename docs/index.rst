@@ -3,22 +3,42 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the elevans knowledge base
-=====================================
+elevans knowledge base
+======================
 
-This is a knowledge base of various fixes and howtos I've come across.
+   Welcome to the elevans knowledge base (KB). This KB contains various bits of information I've found useful enough to document.
 
 .. toctree::
    :maxdepth: 3
-   :caption: Contents:
+   :caption: 🖥️ Computers
 
-   development/development_index
-   networking/networking_index
-   image_processing
    security/security_index
    software/software_index
    system/system_index
-   usage
+
+.. toctree::
+   :maxdepth: 3
+   :caption: ⚙️ Development
+
+   development/java_dev_index
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 🌐 Networking
+
+   networking/networking_index
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 🔬 Research
+
+   image_processing
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 📚 Reference
+
+   api
 
 Indices and tables
 ==================
