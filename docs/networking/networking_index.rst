@@ -9,3 +9,4 @@ A collection of networking related operations.
     NAS <nas.md>
     SSH <ssh.md>
     Storage <storage.md>
+    VNC <vnc.md>
