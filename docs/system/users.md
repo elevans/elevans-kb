@@ -45,3 +45,17 @@ $ whoami
 newuser
 $ sudo ls /root
 ```
+
+## Deleting a user
+
+Use the following command to delete a user and keep the home directory:
+
+```bash
+$ sudo userdel username
+```
+
+If you don't want to keep the home directory you can use the `-r` remove flag to remove the home directory and mail spool entry for the user:
+
+```bash
+$ sudo userdel -r username
+```
