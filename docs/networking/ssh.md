@@ -2,7 +2,13 @@
 
 ## Generating an SSH private/public key pair
 
-To crate an SSH private/public key pair
+In your terminal run the following command to generate a new SSH key pair using the `Ed25519` algorithm.
+
+```bash
+$ ssh-keygen -t ed25519 -C "key_id"
+```
+
+Hit enter to apply the default to the prompts. Once completed your new SSH public SSH key will be located at `~/.ssh/id_ed25519.pub`.
 
 ## Send files via SSH
 
