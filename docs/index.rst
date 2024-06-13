@@ -21,6 +21,7 @@ elevans knowledge base
    :caption: ⚙️ Development
 
    development/java_dev_index
+   development/pypi_release
 
 .. toctree::
    :maxdepth: 3
