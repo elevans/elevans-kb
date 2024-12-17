@@ -10,7 +10,7 @@ PyPi release
 5. Bump the project minor version number and add back the `dev0` to the version number.
 6. Push the commits and push the tag. To push the tag use the following command: `git push origin 1.10.0`. With out this command tags are stored only locally.
 
-## Publish on the package on PyPi
+## Publish the package on PyPi
 
 1. Checkout the appropriate version tag.
     - For example: `git checkout 1.10.0`

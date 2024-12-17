@@ -1,5 +1,5 @@
 # elevans-kb
-This repository will host information (a knowledge base) on how to do things that I've figured out.
+This repository hosts information (a knowledge base) on how to do things that I've figured out.
 
 To build the docs, pull this repository and construct a conda/mamba environment using the `environment.yml` file in this repository.
 
