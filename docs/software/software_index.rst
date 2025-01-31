@@ -7,4 +7,5 @@ A collection of operations broken down by software.
     :maxdepth: 3
 
     napari <napari.md>
+    pandoc <pandoc.md>
     pdftk <pdftk.md>
