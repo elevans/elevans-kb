@@ -31,7 +31,7 @@ Connect to a Java application by starting it with the following
 flag (_note the port number_):
 
 ```bash
-$ ./ImageJ2-linux64 -agentlib:jdwp=server=y,suspend=y,transport=d    t_socket,address=localhost:8300
+$ ./ImageJ2-linux64 -agentlib:jdwp=server=y,suspend=y,transport=dt_socket,address=localhost:8300
 ```
 
 For more complicated tasks, like starting Fiji with a specific JDK version and custom JARs, pass the -agentlib flag to the JDK:
