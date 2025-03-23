@@ -5,7 +5,7 @@
 Run the following bash command to install pandoc and latex support (needed for PDF writing).
 
 ```bash
-$ sudo apt install install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
+$ sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
 ```
 
 ## Markdown to PDF with pandoc
