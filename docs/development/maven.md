@@ -21,5 +21,5 @@ $ rm /path/to/fiji/jars/ij-*.jar; mvn dependency:copy -DoutputDirectory=/path/to
 Use `-rf :module-name` to "resume from" a particular module in the build pipeline. For example:
 
 ```bash
-$ mvn clean install mvn clean install -Dscijava.app.directory=/path/to/fiji.app -rf:scijava-ops-image
+$ mvn clean install -Dscijava.app.directory=/path/to/fiji.app -rf:scijava-ops-image
 ```
