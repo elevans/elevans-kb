@@ -22,6 +22,7 @@ elevans knowledge base
 
    development/java_dev_index
    development/pypi_release
+   development/rust_dev_index
 
 .. toctree::
    :maxdepth: 3
