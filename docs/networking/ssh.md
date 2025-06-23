@@ -47,3 +47,26 @@ Example usage:
 ```bash
 $ ssh <alias_1>
 ```
+
+## Moving SSH keys between comuters
+
+First move the `.ssh` folder to the new computer's `/home/user/` directory. Next change each file's permissions to match
+the configuration below:
+
+```bash
+-rw-r--r-- 1 edward edward  592 Dec 29 09:10 config
+-rw------- 1 edward edward  411 Dec 26 13:53 id_ed25519
+-rw-r--r-- 1 edward edward   99 Dec 26 13:53 id_ed25519.pub
+-rw------- 1 edward edward 1262 Dec 29 09:10 known_hosts
+```
+
+To do this, run the following `chmod` commands:
+
+```bash
+$ chmod 700 ~/.ssh
+$ chown -R edward:edward ~/.ssh
+$ chmod 644 ~/.ssh/config
+$ chmod 644 ~/.ssh/id_ed25519.pub
+$ chmod 600 ~/.ssh/id_ed25519
+$ chmod 600 ~/.ssh/known_hosts
+```
