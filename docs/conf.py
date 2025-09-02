@@ -30,7 +30,7 @@ author = 'Edward Evans'
 # ones.
 extensions = [
     'sphinx_search.extension',
-    'myst_nb',
+    'myst_parser',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
