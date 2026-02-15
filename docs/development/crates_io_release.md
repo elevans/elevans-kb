@@ -5,12 +5,12 @@ crates.io release
 
 ### Update the version number and create a Git tag
 
-1. Bump the version number of the crate.
+1. Bump the version number of the crate and create a commit with `Release {name} version #.#.#`.
+    a. Pro-tip: You can make an empty commit like this: `git commit --allow-empty -m "Release {name} version #.#.#`.
 2. Tag the release with `git tag -a {prefix-version} -m "Release version #.#.#"`.
-   For example, the `imgal` core Rust library release looks like `git tag -a imgal-v0.1.0 -m "Release version 0.1.0"`.
-3. Push the tag to GitHub with `git push origin {prefix-version}`. For example, the
-   `imgal` release tag push looks like `git push origin imgal-v0.1.0`.
-4. Bumpo the minor version number in the `Cargo.toml`.
+   For example, the `imgal` core Rust library release looks like `git tag -a imgal-v0.1.0 -m "Release {name} version 0.1.0"`.
+3. Push the tag to GitHub with `git push origin {prefix-version}`. For example, the `imgal` release tag push looks like `git push origin imgal-v0.1.0`.
+4. Bump the minor version number in the `Cargo.toml` and commit "Bump {name} to the next development cycle".
 
 ### Publish the crate on crates.io
 
